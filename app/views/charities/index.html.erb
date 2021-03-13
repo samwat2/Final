@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Charities</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Charity</th>
+      <th scope="col">Charity name</th>
+      <th scope="col">Funding</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @charities.each do |charity| %>
+      <tr>
+        <th scope="row"><%= charity.charity_name %></th>
+        <td><%= charity.funding %></td>
+        <td><%= link_to 'Show', charity %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_charity_path(charity) %></td>
+          <td><%= link_to 'Destroy', charity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Charity', new_charity_path %>
+
+

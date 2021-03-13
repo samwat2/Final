@@ -1,0 +1,31 @@
+<%= form_with(model: charity) do |form| %>
+  <% if charity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(charity.errors.count, "error") %> prohibited this charity from being saved:</h2>
+
+      <ul>
+        <% charity.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <form>
+    
+  </form>
+
+  <div class="input-group mb-3">
+      <%= form.label :charity_name, class:"input-group-text" %>
+      <%= form.text_field :charity_name, class:"form-control" %>
+  </div>
+
+  <div class="input-group mb-3">
+    <%= form.label :funding, class:"input-group-text" %>
+    <%= form.text_field :funding, class:"form-control" %>
+  </div>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
